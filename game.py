@@ -4,10 +4,10 @@ import tkinter.messagebox
 import pygame
 import board
 
-darkcolor = (0, 0, 0)
-lightcolor = (54, 5, 69)
-cyan = (0, 190, 197)
-magenta = (255, 11, 235)
+darkcolor = (201, 143, 186)
+lightcolor = (247, 242, 137 )
+color_1 = ( 214, 76, 133)
+color_2 = (39, 35, 3 )
 
 class Pane:
     def __init__(self, row_count, column_count, square_size):
@@ -33,9 +33,9 @@ class Pane:
         for r in range(self.board.row_count):
             for c in range(self.board.column_count):
                 if self.board.grid[r, c] == 1:
-                    current_color = cyan
+                    current_color = color_1
                 elif self.board.grid[r, c] == 2:
-                    current_color = magenta
+                    current_color = color_2
                 else:
                     current_color = darkcolor
                 x_position = c * self.square_size + self.circle_offset
@@ -79,7 +79,7 @@ def main():
     pane.mybg()
     continue_playing = True
     turn = 1
-    current_color = cyan
+    current_color = color_1
 
     while continue_playing:
         for event in pygame.event.get():
@@ -101,7 +101,7 @@ def main():
                         pane.reset()
                     else:  
                         turn = 1 if turn == 2 else 2  
-                        current_color = cyan if turn == 1 else magenta 
+                        current_color = color_1 if turn == 1 else color_2 
                         pane.track_mouse_motion(event.pos[0], current_color) 
 
 
