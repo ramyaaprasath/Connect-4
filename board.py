@@ -6,10 +6,10 @@ class Board:
         self.column_count = column_count
         self.grid = np.zeros((row_count, column_count))
 
-    def is_valid_location(self, column):
+    def crct_pos(self, column):
         return self.grid[self.row_count - 1, column] == 0
 
-    def get_next_open_row(self, column):
+    def next_mypos(self, column):
         for row in range(self.row_count):
             if self.grid[row, column] == 0:
                 return row
@@ -17,7 +17,7 @@ class Board:
     def drop_piece(self, row, column, turn):
         self.grid[row, column] = turn
 
-    def has_four_in_a_row(self, turn):
+    def win_move(self, turn):
         for r in range(self.row_count):
             for c in range(self.column_count - 3):
                 if self.grid[r, c] == turn and self.grid[r, c + 1] == turn and self.grid[r, c + 2] == turn and self.grid[r, c + 3] == turn:
